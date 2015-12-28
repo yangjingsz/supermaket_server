@@ -1,0 +1,28 @@
+package util;
+
+import java.io.IOException;
+import java.util.Properties;
+/**
+ * 读取properties文件的工具类
+ */
+public class Tools {
+	private static Properties pro = new Properties();
+
+	/**
+	 * 读取properties配置文件信息
+	 */
+	static{
+		try {
+			pro.load(Tools.class.getClassLoader().getResourceAsStream(SysConstants.SYS_PROPERTYNAME));
+		} catch (IOException e) {
+			e.printStackTrace(); 
+		}
+	}
+	/**
+	 * 根据key得到value的值
+	 */
+	public static String getValue(String key)
+	{
+		return pro.getProperty(key);
+	}
+}
